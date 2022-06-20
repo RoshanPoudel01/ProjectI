@@ -14,9 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
-
+Route::get('/cars', function () {
+    return view('frontend.car');
+});
+Route::get('/about', function () {
+    return view('frontend.about');
+});
+Route::get('/contact', function () {
+    return view('frontend.contact');
+});
 Auth::routes();
 //admin
 Route::get('/admin', function () {
@@ -24,7 +32,7 @@ Route::get('/admin', function () {
 })->name('dashboard')->middleware('isAdmin');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::middleware(['web','auth'])->group(function () {
+Route::middleware(['web','auth','isAdmin'])->group(function () {
 
     // Test
     Route::get('test', [App\Http\Controllers\TestController::class, 'index'])->name('test.index');
