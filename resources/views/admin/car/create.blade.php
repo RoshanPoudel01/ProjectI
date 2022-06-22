@@ -16,7 +16,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                {{ Form::open(['route' => 'car', 'method' => 'post']) }}
+                {{ Form::open(['route' => 'car', 'method' => 'post','enctype'=>'multipart/form-data']) }}
 
                 @include('admin.car.includes.main_form')
 
@@ -29,3 +29,6 @@
 
     </div>
 @endsection
+
+
+

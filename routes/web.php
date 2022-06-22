@@ -16,9 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
-Route::get('/cars', function () {
-    return view('frontend.car');
-});
+// Route::get('/cars', function () {
+//     return view('frontend.car');
+// });
+Route::get('/cars', [App\Http\Controllers\Frontend\FrontController::class, 'display_car'])->name('cars_view');
+
 Route::get('/about', function () {
     return view('frontend.about');
 });

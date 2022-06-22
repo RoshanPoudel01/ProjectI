@@ -8,6 +8,13 @@
         </div>
     </div>
     <div class="form-group row mb-3">
+        {{ Form::label('slug', 'Slug *', ['class' => 'col-3 col-form-label']) }}
+        <div class="col-9">
+            {{ Form::text('slug', null, ['class' => 'form-control', 'id' => 'slug', 'placeholder' => 'Slug']) }}
+            @include('admin.includes.validation_error_message',['fieldname' => 'slug'])
+        </div>
+    </div>
+    <div class="form-group row mb-3">
         {{ Form::label('car_brand_id', 'Car Brand *', ['class' => 'col-3 col-form-label']) }}
         <div class="col-9">
             {{ Form::select('car_brand_id',$data['car_brands'], null, ['class' => 'form-control', 'id' => 'car_brand_id', 'placeholder' => 'Please Select Car Brand']) }}
@@ -51,11 +58,11 @@
     </div>
 
 
-  <div class="form-group row mb-3">
-        {{ Form::label('logo_image', 'Image', ['class' => 'col-3 col-form-label']) }}
+    <div class="form-group row mb-3">
+        {{ Form::label('logo_image', 'Logo', ['class' => 'col-3 col-form-label']) }}
         <div class="col-9">
-            {{ Form::file('logo_image', null, ['class' => 'form-control', 'id' => 'logo_image']) }}
-            @include('admin.includes.validation_error_message',['fieldname' => 'logo'])
+            {{ Form::file('logo_image', null,['class' => 'form-control', 'id' => 'logo_image']) }}
+            @include('admin.includes.validation_error_message',['fieldname' => 'logo_image'])
             @if(isset($data['row']->logo))
                 <img src="{{ asset('images/cars/' . $data['row']->logo) }}" class="img-fluid" width="100px">
             @endif

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\UploadedFile;
 use App\Models\Car;
 use App\Models\CarBrand;
 use Exception;
@@ -41,19 +41,22 @@ class CarController extends Controller
             'car_brand_id'   => 'required|integer',
             'car_name' => 'required|string|max:255',
             'plate_no' => 'required|string|max:255|unique:cars',
-            'image_field' => 'nullable|image|max:2048',
+
         ]);
 
-        // Image Upload
-        if ($request->hasFile('image_field')) {
-            $image = $request->file('image_field');
-            $image_name = time().'_'.$image->getClientOriginalName();
-            $image->move('images/cars', $image_name);
-            $request->request->add(['logo' => $image_name]);
-        }
+
+      // Image Upload
+      if ($request->hasFile('logo_image')) {
+        $image = $request->file('logo_image');
+        $image_name =$image->getClientOriginalName();
+        $image->move('images/cars/', $image_name);
+        $request->request->add(['logo' => $image_name]);
+    }
+
 
         try{
             $request->request->add(['created_by' => auth()->user()->id]);
+           // dd($request->all(), $request->hasFile('logo_image'));
             $this->model->create($request->all());
            session()->flash('success_message','Data Inserted Successfully');
         }
@@ -94,10 +97,10 @@ class CarController extends Controller
             'car_name' => 'required|string|max:255',
             'plate_no' => 'required|string|max:255|unique:cars',
         ]);
-        if ($request->hasFile('image_field')) {
-            $image = $request->file('image_field');
-            $image_name = time().'_'.$image->getClientOriginalName();
-            $image->move('images/cars', $image_name);
+        if ($request->hasFile('logo_image')) {
+            $image = $request->file('logo_image');
+            $image_name = $image->getClientOriginalName();
+            $image->move('images/cars/', $image_name);
             $request->request->add(['logo' => $image_name]);
         }
         try{

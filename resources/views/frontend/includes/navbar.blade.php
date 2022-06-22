@@ -22,24 +22,28 @@
           </li>
           <li class="nav-item">
           @if (Route::has('login'))
-          <div class="hidden fixed ">
+          <div class="nav-link ">
               @auth
                   {{-- <a href="{{ route('logout') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Logout</a> --}}
                   <a href="/dashboard" class="nav-link" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                    <i class="nav-icon fas fa-sign-out-alt"></i>
-                    <p>
-                        Logout
-                    </p>
+                         Logout
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                     @csrf
                 </form>
               @else
+            </li>
+          <li class="nav-item">
+
                   <a href="{{ route('login') }}" class="nav-link">Log in</a>
+          </li>
+          {{-- <li class="nav-item">
+
 
                   @if (Route::has('register'))
                       <a href="{{ route('register') }}" class="nav-link">Register</a>
                   @endif
+          </li> --}}
               @endauth
           </div>
       @endif

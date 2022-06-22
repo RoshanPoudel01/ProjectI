@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('car_brand_id')->constrained('car_brands');
             $table->string('car_name');
+            $table->string('slug');
             $table->string('plate_no');
-            $table->string('image')->nullable();
+            $table->string('logo')->nullable();
             $table->boolean('stock');
             $table->integer('minimum_charge');
             $table->integer('charge_per_km');

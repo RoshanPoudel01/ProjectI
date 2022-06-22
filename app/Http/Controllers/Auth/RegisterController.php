@@ -50,11 +50,27 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'regex:/^[a-zA-Z ]*$/', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'phone' => 'required|regex:/^98[0-9]{8}$/|unique:users',
+            'password' => ['required', 'string', 'min:8','max:32', 'confirmed'],
+            'phone' => ['required','regex:/^98[0-9]{8}$/','unique:users'],
             'address'=> ['required', 'string', 'max:255'],
+        ],[
+            'name.required'=>'Please Enter Your Name.',
+            'name.regex'=>'Entered Name must be alphabets only.',
+            'name.max'=>'Name cannot be more than 255 characters only.',
+            'email.required'=>'Please Enter Your Email.',
+            'email.email'=>'Email format not valid.',
+            'password.required'=>'Password Field cannot be empty.',
+            // 'password.confirmed'=>'Password Confirmation failed',
+            'phone.required'=>'Please Enter Your Phone Number.',
+            'phone.min'=>'Password must be at least 8 characters.',
+            'phone.max'=>'Password cannot be more than 32 characters.',
+            'phone.regex'=>'Invalid Phone Format.',
+            'address.required'=>'Please Enter Your Address.'
+
+
+
         ]);
     }
 

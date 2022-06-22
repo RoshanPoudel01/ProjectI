@@ -39,15 +39,15 @@
                 <!-- Add icons to the links using the .nav-icon class
         with font-awesome or any other icon font library -->
 
-                <li class="nav-item {{ request()->is('home*') ? 'menu-open' : "" }}">
-                    <a href="{{ route('home') }}" class="nav-link {{ request()->is('home*') ? 'active' : "" }}">
+                <li class="nav-item {{ request()->is('dashboard*') ? 'menu-open' : "" }}">
+                    <a href="{{ route('dashboard') }}" class="nav-link {{ request()->is('dashboard*') ? 'active' : "" }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
                         </p>
                     </a>
                 </li>
-
+{{--
                  <li class="nav-item {{ request()->is('test*') ? 'menu-open' : "" }}">
                     <a href="#" class="nav-link {{ request()->is('test*') ? 'active' : "" }}">
                         <i class="nav-icon fa fa-tasks"></i>
@@ -70,7 +70,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
 
               <li class="nav-item {{ request()->is('carbrand*') ? 'menu-open' : "" }}">
                     <a href="#" class="nav-link {{ request()->is('carbrand*') ? 'active' : "" }}">

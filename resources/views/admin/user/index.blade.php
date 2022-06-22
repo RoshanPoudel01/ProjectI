@@ -31,7 +31,7 @@
                                 <th>S.N.</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Created Date</th>
+                                <th>Join Date</th>
                              {{-- <th>Action</th> --}}
                             </tr>
                         </thead>
@@ -42,7 +42,7 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $row->name }}</td>
                                     <td>{{ $row->email }}</td>
-                                    <td>{{ $row->created_at->diffForHumans() }}</td>
+                                    <td>{{ $row->created_at->format('Y-M-d') }}</td>
                                     {{-- <td style="display:flex">
                                         <a class="btn btn-primary btn-sm mr-2"
                                             href="{{ route('car.show', ['id' => $row->id]) }}">

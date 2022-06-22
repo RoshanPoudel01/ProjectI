@@ -15,7 +15,7 @@
         <!-- form start -->
         {{ Form::model($data['row'], ['route' => ['car.update',  $data['row']->id],'method' => 'put']) }}
 
-            @include('backend.car.includes.main_form')
+            @include('admin.car.includes.main_form')
 
         {{ Form::close() }}
 
