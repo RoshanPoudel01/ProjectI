@@ -33,7 +33,10 @@ class CarBrandController extends Controller
 
         //validation
         $request->validate([
-            'brand' => 'required',
+            'brand' => 'required|regex:/^[a-zA-Z ]*$/',
+        ],[
+            'brand.required'=>'Please Enter a Car Brand',
+            'brand.regex'=>'Car Brand name can only be alphabets and spaces'
         ]);
 
         try{

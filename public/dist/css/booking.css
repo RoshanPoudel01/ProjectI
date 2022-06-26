@@ -1,0 +1,19 @@
+.img-fluid {
+    margin-top: 40px;
+    margin-left: 380px;
+    margin-bottom: 40px;
+   width: 41% !important;
+    height: 64% !important;
+  }
+.imgbck{
+    background-color: black;
+}
+.card-body {
+margin-left: 200px;
+    padding: 1.25rem;
+    margin-right: 200px;
+}
+.btn
+{
+    margin-left: 680px;
+}

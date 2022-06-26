@@ -1,0 +1,14 @@
+body{
+    background-color: whitesmoke;
+}
+.cardoffer{
+    border-radius: 50px 50px 50px 50px;
+    margin-left: 60px !important;
+    margin: 30px;
+    padding: 20px;
+    float: left;
+    max-width: 350px;
+    border-style: outset;
+    border-color: skyblue;
+
+}

@@ -42,15 +42,7 @@
     <!-- AdminLTE App -->
     <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
 
-    <script>
-        $(document).ready(function() {
-            $("#name").keyup(function() {
-                let Name = $(this).val();
-                let slug = Name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
-                $("#slug").val(slug);
-            });
-        });
-    </script>
+
 </body>
 
 </html>

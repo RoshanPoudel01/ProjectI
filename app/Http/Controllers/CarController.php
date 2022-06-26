@@ -41,7 +41,10 @@ class CarController extends Controller
             'car_brand_id'   => 'required|integer',
             'car_name' => 'required|string|max:255',
             'plate_no' => 'required|string|max:255|unique:cars',
+            'minimum_charge'=>'required|numeric|min:1|not_in:0',
 
+        ],[
+            'minimum_charge.min'=>'The minimum charge must be at least 1'
         ]);
 
 
@@ -95,7 +98,7 @@ class CarController extends Controller
         $request->validate([
             'car_brand_id'   => 'required|integer',
             'car_name' => 'required|string|max:255',
-            'plate_no' => 'required|string|max:255|unique:cars',
+            'plate_no' => 'required|string|max:255',
         ]);
         if ($request->hasFile('logo_image')) {
             $image = $request->file('logo_image');

@@ -1,60 +1,56 @@
-<nav class="navbar navbar-expand-lg navbar-dark " aria-label="Fifth navbar example">
-    <div class="container-fluid">
-   <a href="{{url('/')}}" class="navbar-brand"><i class="fas fa-car">Cars Easy</i></a>
+@include('frontend.includes.header')
+                <nav id="primary-nav" >.
+                <div class=" d-flex justify-content-between align-items-center py-3">
+                    <div class="d-flex justify-content-start align-items-center">
+                  <li>
+                    <a class="nav-link" href="{{url('/')}}">
+                        <i class="fas fa-car fa-2x ">Cars Easy</i>
+                        </a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
-        <span ><i class="fa-solid fa-bars"></i></span>
-      </button>
+                  </li>
+                  <li ><a class="nav-link" href="{{url('/')}}">Home</a></li>
+                  <li ><a class="nav-link" href="{{url('cars')}}">Cars</a></li>
 
-      <div class="collapse navbar-collapse" id="navbarsExample05">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{url('/')}}">Home</a>
-          </li>
-          <li class="nav-item">
-          <a href="{{url('/cars')}}" class="nav-link">Cars</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{url('/about')}}">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{url('/contact')}}">Contact</a>
-          </li>
-          <li class="nav-item">
-          @if (Route::has('login'))
-          <div class="nav-link ">
-              @auth
-                  {{-- <a href="{{ route('logout') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Logout</a> --}}
-                  <a href="/dashboard" class="nav-link" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                         Logout
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                    @csrf
-                </form>
-              @else
-            </li>
-          <li class="nav-item">
+                  <li >
+                      <a class="nav-link" href="{{url('about')}}">About</a>
 
-                  <a href="{{ route('login') }}" class="nav-link">Log in</a>
-          </li>
-          {{-- <li class="nav-item">
+                  </li>
 
+                  <li><a class="nav-link" href="{{url('contact')}}">Contact Us</a></li>
+                </div>
+                  <div class="d-flex align-items-center py-3">
 
-                  @if (Route::has('register'))
-                      <a href="{{ route('register') }}" class="nav-link">Register</a>
-                  @endif
-          </li> --}}
-              @endauth
-          </div>
-      @endif
-        </li>
+                            <li class="nav-item">
+                                @if (Route::has('login'))
+                                <div class="nav-link ">
+                                    @auth
+                                    <a  class="nav-item" onclick="event.preventDefault();document.getElementById('booking').submit();">
+                                        My Bookings
+                               </a>
+                               <form id="booking" action="{{ route('car.booking') }}" method="POST">
+                                   @csrf
+                               </form>
+                                         <a href="/dashboard" class="nav-item" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                               Logout
+                                      </a>
+                                      <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                          @csrf
+                                      </form>
+                                    @else
+                                  </li>
+                                <li class="nav-item">
+
+                                        <a href="{{ route('login') }}" class="nav-link">Log in</a>
+                                </li>
+
+                                     @endauth
+                                </div>
+                            @endif
+                              </li>
+                        </div>
+                        </div>
+                    </nav>
 
 
 
 
-</div>
-        </ul>
-
-      </div>
-    </div>
-  </nav>

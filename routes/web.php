@@ -16,34 +16,33 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
-// Route::get('/cars', function () {
-//     return view('frontend.car');
-// });
 Route::get('/cars', [App\Http\Controllers\Frontend\FrontController::class, 'display_car'])->name('cars_view');
-
 Route::get('/about', function () {
     return view('frontend.about');
 });
 Route::get('/contact', function () {
     return view('frontend.contact');
 });
+Route::middleware(['web','auth'])->group(function () {
+Route::get('/cars/{id}', [App\Http\Controllers\Frontend\FrontController::class, 'view_details'])->name('cars_details');
+Route::post('cars/bookcar', [App\Http\Controllers\BookingController::class, 'book_car'])->name('car.book');
+Route::get('cars/bookings', function () {
+    return view('frontend.mybooking');
+})->name('car.booking');
+
+});
+
 Auth::routes();
-//admin
-Route::get('/admin', function () {
-    return view('admin.dashboard');
-})->name('dashboard')->middleware('isAdmin');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware(['web','auth','isAdmin'])->group(function () {
+//admin
 
-    // Test
-    Route::get('test', [App\Http\Controllers\TestController::class, 'index'])->name('test.index');
-    Route::get('test/create', [App\Http\Controllers\TestController::class, 'create'])->name('test.create');
-    Route::post('test', [App\Http\Controllers\TestController::class, 'store'])->name('test');
-    Route::get('test/{id}', [App\Http\Controllers\TestController::class, 'show'])->name('test.show');
-    Route::get('test/{id}/edit', [App\Http\Controllers\TestController::class, 'edit'])->name('test.edit');
-    Route::put('test/{id}/update', [App\Http\Controllers\TestController::class, 'update'])->name('test.update');
-    Route::delete('test/{id}/delete', [App\Http\Controllers\TestController::class, 'delete'])->name('test.delete');
+    Route::get('/admin', function () {
+        return view('admin.dashboard');
+    })->name('dashboard');
+
 
      //CarBrand
      Route::get('carbrand', [App\Http\Controllers\CarBrandController::class, 'index'])->name('carbrand.index');

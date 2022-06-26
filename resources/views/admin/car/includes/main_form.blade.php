@@ -7,13 +7,7 @@
             @include('admin.includes.validation_error_message',['fieldname' => 'car_name'])
         </div>
     </div>
-    <div class="form-group row mb-3">
-        {{ Form::label('slug', 'Slug *', ['class' => 'col-3 col-form-label']) }}
-        <div class="col-9">
-            {{ Form::text('slug', null, ['class' => 'form-control', 'id' => 'slug', 'placeholder' => 'Slug']) }}
-            @include('admin.includes.validation_error_message',['fieldname' => 'slug'])
-        </div>
-    </div>
+
     <div class="form-group row mb-3">
         {{ Form::label('car_brand_id', 'Car Brand *', ['class' => 'col-3 col-form-label']) }}
         <div class="col-9">
