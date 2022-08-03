@@ -8,7 +8,7 @@
                         </a>
 
                   </li>
-                  <li ><a class="nav-link" href="{{url('/')}}">Home</a></li>
+                  <li ><a class="nav-link" href="{{route('home')}}">Home</a></li>
                   <li ><a class="nav-link" href="{{url('cars')}}">Cars</a></li>
 
                   <li >
@@ -20,16 +20,15 @@
                 </div>
                   <div class="d-flex align-items-center py-3">
 
-                            <li class="nav-item">
+                <li>
                                 @if (Route::has('login'))
                                 <div class="nav-link ">
                                     @auth
-                                    <a  class="nav-item" onclick="event.preventDefault();document.getElementById('booking').submit();">
+                                    <a class="nav-item" href="{{ route('myprofile') }}">Profile</a>
+                                    <a  class="nav-item" href="{{ route('car.booking') }}"">
                                         My Bookings
                                </a>
-                               <form id="booking" action="{{ route('car.booking') }}" method="POST">
-                                   @csrf
-                               </form>
+
                                          <a href="/dashboard" class="nav-item" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                                Logout
                                       </a>
@@ -37,7 +36,7 @@
                                           @csrf
                                       </form>
                                     @else
-                                  </li>
+                     </li>
                                 <li class="nav-item">
 
                                         <a href="{{ route('login') }}" class="nav-link">Log in</a>

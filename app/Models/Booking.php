@@ -13,7 +13,7 @@ class Booking extends Model
         return $this->belongsTo(User::class,'booking_by');
     }
     public function car(){
-        return $this->belongsTo(Car::class);
+        return $this->belongsTo(Car::class,'booking_for');
     }
 
     use HasFactory;

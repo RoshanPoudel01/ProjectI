@@ -13,7 +13,7 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        {{ Form::model($data['row'], ['route' => ['car.update',  $data['row']->id],'method' => 'put']) }}
+        {{ Form::model($data['row'], ['route' => ['car.update',  $data['row']->id],'method' => 'put','enctype'=>'multipart/form-data']) }}
 
             @include('admin.car.includes.main_form')
 

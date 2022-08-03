@@ -47,30 +47,8 @@
                         </p>
                     </a>
                 </li>
-{{--
-                 <li class="nav-item {{ request()->is('test*') ? 'menu-open' : "" }}">
-                    <a href="#" class="nav-link {{ request()->is('test*') ? 'active' : "" }}">
-                        <i class="nav-icon fa fa-tasks"></i>
-                        <p>
-                            Test
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('test.index') }}" class="nav-link {{ request()->is('test') ? 'active' : "" }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>List</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('test.create') }}" class="nav-link {{ request()->is('test/create') ? 'active' : "" }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Create</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li> --}}
+
+
 
               <li class="nav-item {{ request()->is('carbrand*') ? 'menu-open' : "" }}">
                     <a href="#" class="nav-link {{ request()->is('carbrand*') ? 'active' : "" }}">
@@ -120,7 +98,26 @@
                     </ul>
                 </li>
 
-                  <li class="nav-item {{ request()->is('user*') ? 'menu-open' : "" }}">
+
+
+                <li class="nav-item {{ request()->is('bookings*') ? 'menu-open' : "" }}">
+                    <a href="#" class="nav-link {{ request()->is('bookings*') ? 'active' : "" }}">
+                        <i class="nav-icon fa fa-tasks"></i>
+                        <p>
+                            Bookings
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('total.bookings') }}" class="nav-link {{ request()->is('bookings') ? 'active' : "" }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>List</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item {{ request()->is('user*') ? 'menu-open' : "" }}">
                     <a href="#" class="nav-link {{ request()->is('user*') ? 'active' : "" }}">
                         <i class="nav-icon fa fa-tags"></i>
                         <p>
@@ -143,40 +140,6 @@
                         </li> --}}
                     </ul>
                 </li>
-
-            {{--    <li class="nav-item {{ request()->is('attribute*') ? 'menu-open' : "" }}">
-                    <a href="#" class="nav-link {{ request()->is('attribute*') ? 'active' : "" }}">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Attribute
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('attribute.index') }}" class="nav-link {{ request()->is('attribute') ? 'active' : "" }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>List</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('attribute.create') }}" class="nav-link {{ request()->is('attribute/create') ? 'active' : "" }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Create</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-
-                <li class="nav-item">
-                    <a href="{{ route('setting.create') }}" class="nav-link">
-                        <i class="nav-icon fa fa-cog"></i>
-                        <p>
-                            Setting
-                        </p>
-                    </a>
-                </li> --}}
 
                 <li class="nav-item">
                     <a href="/dashboard" class="nav-link" onclick="event.preventDefault();document.getElementById('logout-form').submit();">

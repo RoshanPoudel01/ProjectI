@@ -4,12 +4,19 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
 public function user_bookings(){
-        die('hi');
-                return view('frontend.mybooking');
+    $id = Auth::user()->id;
+    $data = [];
+
+    // $data['rooms'] = Room::get();
+    $data['books'] = Booking::where('booking_by',$id)->get();
+    $data['books'] = Booking::where('status','booked')->get();
+
+     return view('frontend.mybooking',compact('data'));
         }
 
 public function book_car(Request $request){
@@ -48,4 +55,23 @@ public function book_car(Request $request){
                 return redirect()->route('car.booking');
 
          }
+         public function total_booking(){
+            $data = [];
+
+        $data['rows'] = Booking::all();
+
+        return  view('admin.booking.viewbookings',compact('data'));
+         }
+         public function delete($id){
+            die('hi');
+
+            $data['books'] = Booking::where('id',$id);
+
+            $data['books']->update(['status'=>'cancelled']);
+
+            session()->flash('success_message','Data Deleted Successfully');
+
+            return redirect()->route('car.booking');
+
+        }
 }

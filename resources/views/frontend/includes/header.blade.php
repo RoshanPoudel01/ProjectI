@@ -10,5 +10,5 @@
 <link rel="stylesheet" href="{{asset('dist/css/navboot.css')}}">
 <link rel="icon" href="{{ asset('images/carlogo.png') }}" type="image/icon type">
    <!-- Styles -->
- <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+ {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 </head>

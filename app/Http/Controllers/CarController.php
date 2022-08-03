@@ -102,10 +102,11 @@ class CarController extends Controller
         ]);
         if ($request->hasFile('logo_image')) {
             $image = $request->file('logo_image');
-            $image_name = $image->getClientOriginalName();
+            $image_name =$image->getClientOriginalName();
             $image->move('images/cars/', $image_name);
             $request->request->add(['logo' => $image_name]);
         }
+
         try{
             $data['row'] = $this->model->where('id',$id)->first();
             $data['row']->update($request->all());

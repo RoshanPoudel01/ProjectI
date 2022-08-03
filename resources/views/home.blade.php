@@ -38,7 +38,7 @@
                     <div class="left-content">
                         <br>
                         <h4>About us</h4>
-                        <p>Aenean hendrerit metus leo, quis viverra purus condimentum nec. Pellentesque a sem semper, lobortis mauris non, varius urna. Quisque sodales purus eu tellus fringilla.<br><br>Mauris sit amet quam congue, pulvinar urna et, congue diam. Suspendisse eu lorem massa. Integer sit amet posuere tellus, id efficitur leo. In hac habitasse platea dictumst. Vel sequi odit similique repudiandae ipsum iste, quidem tenetur id impedit, eaque et, aliquam quod.</p>
+                        <p>Cars Easy is a simple to use Car rental site brought to you people so that car renting gets as easy as it can.</p>
                         <div class="blue-button">
                             <a href="{{url('about')}}">Discover More</a>
                         </div>
@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <img src="img/about-1-720x480.jpg" class="img-about" alt="">
+                    <img src="{{asset('images/carlogo.png')}}" class="img-about" alt="About">
                 </div>
             </div>
         </div>
@@ -58,69 +58,35 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-heading">
-                        <h4>Offers</h4>
-                        <h2>Lorem ipsum dolor sit amet ctetur.</h2>
+                        <h4>New Cars</h4>
+
                     </div>
                 </div>
             </div>
             <div class="row">
+                @foreach ($new_cars['rows'] as $new_car )
+
                 <div class="cardoffer">
                     <div class="featured-item">
                         <div class="thumb">
-                            <img src="img/offer-1-720x480.jpg" alt="">
+                            <img src="{{asset('images/cars/'.$new_car->logo)}}" alt="">
                         </div>
 
                         <div class="down-content">
-                            <h4>Lorem ipsum dolor sit amet, consectetur</h4>
+                            <h4>{{$new_car->car_name}}</h4>
 
-                            <span>from <strong><sup>$</sup>120</strong> per weekend</span>
+                            <span><strong>{{$new_car->minimum_charge}}</strong> per day</span>
 
-                            <p>Vestibulum id est eu felis vulputate hendrerit. Suspendisse dapibus turpis in dui pulvinar imperdiet. Nunc consectetur.</p>
-
-                            <div class="text-button">
-                                <a href="#">View More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cardoffer">
-                    <div class="featured-item">
-                        <div class="thumb">
-                            <img src="img/offer-1-720x480.jpg" alt="">
-                        </div>
-
-                        <div class="down-content">
-                            <h4>Lorem ipsum dolor sit amet, consectetur</h4>
-
-                            <span>from <strong><sup>$</sup>120</strong> per weekend</span>
-
-                            <p>Vestibulum id est eu felis vulputate hendrerit. Suspendisse dapibus turpis in dui pulvinar imperdiet. Nunc consectetur.</p>
+                            <p>{{$new_car->seat_capacity}}</p>
 
                             <div class="text-button">
-                                <a href="#">View More</a>
+                                <a href="{{ route('newcars_details',['id' => $new_car->id]) }}">Book Now</a>
                             </div>
                         </div>
-                    </div>
+            </div>
                 </div>
-                <div class="cardoffer">
-                    <div class="featured-item">
-                        <div class="thumb">
-                            <img src="img/offer-1-720x480.jpg" alt="">
-                        </div>
+                @endforeach
 
-                        <div class="down-content">
-                            <h4>Lorem ipsum dolor sit amet, consectetur</h4>
-
-                            <span>from <strong><sup>$</sup>120</strong> per weekend</span>
-
-                            <p>Vestibulum id est eu felis vulputate hendrerit. Suspendisse dapibus turpis in dui pulvinar imperdiet. Nunc consectetur.</p>
-
-                            <div class="text-button">
-                                <a href="#">View More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 </div>
 
 

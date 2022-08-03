@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,10 +13,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home_car');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/', function () {
-    return view('home');
-});
+
 Route::get('/cars', [App\Http\Controllers\Frontend\FrontController::class, 'display_car'])->name('cars_view');
 Route::get('/about', function () {
     return view('frontend.about');
@@ -23,18 +24,20 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('frontend.contact');
 });
+Route::get('cars/bookings', [App\Http\Controllers\BookingController::class, 'user_bookings'])->name('car.booking')->middleware('web','auth');
 Route::middleware(['web','auth'])->group(function () {
 Route::get('/cars/{id}', [App\Http\Controllers\Frontend\FrontController::class, 'view_details'])->name('cars_details');
-Route::post('cars/bookcar', [App\Http\Controllers\BookingController::class, 'book_car'])->name('car.book');
-Route::get('cars/bookings', function () {
-    return view('frontend.mybooking');
-})->name('car.booking');
+Route::get('/newcar/{id}', [App\Http\Controllers\HomeController::class, 'view_details'])->name('newcars_details');
 
+Route::post('cars/bookcar', [App\Http\Controllers\BookingController::class, 'book_car'])->name('car.book');
+Route::delete('cars/bookings/{id}/delete', [App\Http\Controllers\BookingController::class, 'delete'])->name('booking.delete');
+Route::get('myprofile/', [App\Http\Controllers\Frontend\FrontController::class, 'myprofile'])->name('myprofile');
+Route::get('myprofile/edit/{id}', [App\Http\Controllers\Frontend\FrontController::class, 'myprofile_edit'])->name('myprofile.edit');
+Route::put('myprofile/update/{id}', [App\Http\Controllers\Frontend\FrontController::class, 'myprofile_update'])->name('myprofile.update');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware(['web','auth','isAdmin'])->group(function () {
 //admin
@@ -66,6 +69,7 @@ Route::middleware(['web','auth','isAdmin'])->group(function () {
       Route::get('user', [App\Http\Controllers\UserController::class, 'index'])->name('user.index');
       Route::get('user/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('user.show');
 
-
+    //Booking
+    Route::get('totalbookings',[App\Http\Controllers\BookingController::class,'total_booking'])->name('total.bookings');
 
 });
