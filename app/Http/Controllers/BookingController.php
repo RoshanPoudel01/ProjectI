@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Booking;
+use App\Models\Car;
+
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,8 +15,8 @@ public function user_bookings(){
     $data = [];
 
     // $data['rooms'] = Room::get();
-    $data['books'] = Booking::where('booking_by',$id)->get();
-    $data['books'] = Booking::where('status','booked')->get();
+    $data['books'] = Booking::where('booking_by',$id )->where('status','booked')->get();
+    // $data['books'] = Booking::where('status','booked')->get();
 
      return view('frontend.mybooking',compact('data'));
         }
@@ -51,6 +53,9 @@ public function book_car(Request $request){
                 $request->request->add(['booking_for' => $request['car_id']]);
                 $request->request->add(['amount' => $request['amount']*$result]);
               Booking::create($request->all());
+              $data['car'] = Car::where('id',$request['car_id']);
+              $data['car']->update(['stock'=>0]);
+
 
                 return redirect()->route('car.booking');
 
@@ -62,12 +67,17 @@ public function book_car(Request $request){
 
         return  view('admin.booking.viewbookings',compact('data'));
          }
-         public function delete($id){
-            die('hi');
+         public function cancel($id){
+
 
             $data['books'] = Booking::where('id',$id);
-
             $data['books']->update(['status'=>'cancelled']);
+
+            // $data = "SELECT c.id FROM cars c INNER JOIN bookings b ON c.id=b.booking_for  WHERE b.id=$id";
+            $car = Booking::join('cars', 'cars.id', '=', 'bookings.booking_for')->where('bookings.id',$id)->update(['cars.stock'=>1]);
+
+
+
 
             session()->flash('success_message','Data Deleted Successfully');
 

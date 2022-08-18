@@ -36,34 +36,34 @@
             </div>
         </div>
         <!-- ./col -->
-        {{-- <div class="col-lg-3 col-6">
+        <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-warning">
                 <div class="inner">
-                    <h3>{{ App\Models\SubCategory::count()  }}</h3>
+                    <h3>Rs.{{ App\Models\Payment::sum('amount')  }}</h3>
 
-                    <p>Total Sub-Categories</p>
+                    <p>Total Payment</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
                 </div>
-                <a href="{{ route('sub_category.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ route('payment.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-        </div> --}}
+        </div>
         <!-- ./col -->
         <div class="col-lg-3 col-6">
             <!-- small box -->
-            {{-- <div class="small-box bg-danger">
+            <div class="small-box bg-danger">
                 <div class="inner">
-                    <h3>{{ App\Models\Product::count()  }}</h3>
+                    <h3>{{ App\Models\Booking::where('status','booked')->count()  }}</h3>
 
-                    <p>Total Products</p>
+                    <p>Total Active Bookings</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-pie-graph"></i>
                 </div>
-                <a href="{{ route('product.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div> --}}
+                <a href="{{ route('total.bookings') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
         </div>
         <!-- ./col -->
     </div>

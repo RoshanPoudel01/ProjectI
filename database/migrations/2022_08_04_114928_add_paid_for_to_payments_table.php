@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('payments', function (Blueprint $table) {
-            $table->id();
-            $table->string('transaction_id')->unique();
-            $table->timestamp('paid_date');
-            $table->double('amount',8,2);
+        Schema::table('payments', function (Blueprint $table) {
+            $table->foreignId('paid_for')->after('paid_by')->constrained('bookings')->default('None');
 
-            $table->foreignId('paid_by')->constrained('users');
-            $table->timestamps();
         });
     }
 
@@ -31,6 +26,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payments');
+        Schema::table('payments', function (Blueprint $table) {
+            $table->dropColumn('paid_for');
+
+        });
     }
 };

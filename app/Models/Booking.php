@@ -15,6 +15,10 @@ class Booking extends Model
     public function car(){
         return $this->belongsTo(Car::class,'booking_for');
     }
+    public function bookin_payment(){
+        return $this->hasOne(Payment::class);
+
+    }
 
     use HasFactory;
 }

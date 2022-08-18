@@ -8,11 +8,27 @@
             <table class="table table-striped">
                 <tr>
                     <th>Name</th>
-                    <td>{{ $data['row']->name }}</td>
+                    <td>{{ $data['row']->car_name }}</td>
                 </tr>
                 <tr>
-                    <th>Email</th>
-                    <td>{{ $data['row']->email }}</td>
+                    <th>Name</th>
+                    <td>{{ $data['row']->plate_no }}</td>
+                </tr>
+                <tr>
+                    <th>Image</th>
+                    <td> <img src="{{asset('images/cars/'.$data['row']->logo)}}" height="130px" width="200px" alt=""></td>
+                </tr>
+                <tr>
+                    <th>Seats</th>
+                    <td>{{ $data['row']->seat_capacity }}</td>
+                </tr>
+                <tr>
+                    <th>Fuel Type</th>
+                    <td>{{ $data['row']->fuel_type }}</td>
+                </tr>
+                <tr>
+                    <th>Stock</th>
+                    <td>{{ $data['row']->stock }}</td>
                 </tr>
                 <tr>
                     <th>Created At</th>

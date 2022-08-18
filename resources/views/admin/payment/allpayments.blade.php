@@ -1,4 +1,4 @@
-@extends('admin.layouts.app',['panel' => 'CarBrand','page' => 'List'])
+@extends('admin.layouts.app',['panel' => 'Payments','page' => 'List'])
 
 @section('css')
     <!-- DataTables -->
@@ -13,25 +13,21 @@
     <div class="row">
         <div class="col-12">
 
-            @include('admin.includes.flash_message')
 
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">List Car Brand</h3>
-                    <a class="btn btn-success btn-md float-right" href="{{ route('carbrand.create') }}">
-                        <i class="fas fa-pencil-alt"></i>
-                        Create
-                    </a>
-                </div>
+
                 <!-- /.card-header -->
                 <div class="card-body">
                     <table id="dataTable" class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th>S.N.</th>
-                                <th>Brand</th>
-                                <th>Created Date</th>
-                                <th>Action</th>
+                                <th>Transaction_id</th>
+                                <th>Amount</th>
+                                <th>Paid By</th>
+                                {{-- <th>Paid For Booking to Address</th> --}}
+                                <th>Paid Date</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -39,25 +35,24 @@
                             @foreach ($data['rows'] as $row)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $row->brand }}</td>
+                                    <td>{{ $row->transaction_id }}</td>
+                                    <td>{{ $row->amount }}</td>
+                                    <td>{{ $row->createdBy->name }}</td>
+                                    {{-- <td>{{ $row->paidfor->booking_for}}</td> --}}
+
+
                                     <td>{{ date('Y-m-d', strtotime($row->created_at))}}</td>
 
 
-                                    <td style="display:flex">
+                                    {{-- <td style="display:flex">
                                         <a class="btn btn-primary btn-sm mr-2"
-                                            href="{{ route('carbrand.show', ['id' => $row->id]) }}">
+                                            href="{{ route('contact.show', ['id' => $row->id]) }}">
                                             <i class="fas fa-folder">
                                             </i>
                                             View
                                         </a>
-                                        <a class="btn btn-info btn-sm mr-2"
-                                            href="{{ route('carbrand.edit', ['id' => $row->id]) }}">
-                                            <i class="fas fa-pencil-alt">
-                                            </i>
-                                            Edit
-                                        </a>
 
-                                        <form action="{{ route('carbrand.delete', ['id' => $row->id]) }}" method="post">
+                                        <form action="{{ route('contact.delete', ['id' => $row->id]) }}" method="post">
                                             @method('delete')
                                             @csrf
                                             <button class="btn btn-danger btn-sm delete-confirm" type="button">
@@ -65,7 +60,7 @@
                                                 Delete
                                             </button>
                                         </form>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>

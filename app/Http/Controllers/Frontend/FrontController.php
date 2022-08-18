@@ -18,7 +18,7 @@ class FrontController extends Controller{
         $cars = [];
 
         // $cars['rows'] =$this->model->latest()->get();
-        $cars['rows'] =Car::latest()->get();
+        $cars['rows'] =Car::where('stock',1)->latest()->get();
 
 
         return view('frontend.car',compact('cars'));

@@ -6,7 +6,7 @@
 <div class="row">
 
     @foreach ($cars['rows'] as $car )
-    @if ($car->stock == 1)
+
 
 <div class="cardoffer">
     <div class="featured-item">
@@ -26,7 +26,7 @@
         </div>
     </div>
 </div>
-@endif
+
 
 @endforeach
 

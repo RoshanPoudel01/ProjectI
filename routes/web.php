@@ -15,13 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home_car');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+//Contact
+Route::post('contactnow', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.contactnow');
 
 Route::get('/cars', [App\Http\Controllers\Frontend\FrontController::class, 'display_car'])->name('cars_view');
 Route::get('/about', function () {
     return view('frontend.about');
 });
-Route::get('/contact', function () {
+Route::get('/contactus', function () {
     return view('frontend.contact');
 });
 Route::get('cars/bookings', [App\Http\Controllers\BookingController::class, 'user_bookings'])->name('car.booking')->middleware('web','auth');
@@ -30,10 +31,17 @@ Route::get('/cars/{id}', [App\Http\Controllers\Frontend\FrontController::class, 
 Route::get('/newcar/{id}', [App\Http\Controllers\HomeController::class, 'view_details'])->name('newcars_details');
 
 Route::post('cars/bookcar', [App\Http\Controllers\BookingController::class, 'book_car'])->name('car.book');
-Route::delete('cars/bookings/{id}/delete', [App\Http\Controllers\BookingController::class, 'delete'])->name('booking.delete');
+Route::delete('cars/bookings/{id}/delete', [App\Http\Controllers\BookingController::class, 'cancel'])->name('booking.cancel');
 Route::get('myprofile/', [App\Http\Controllers\Frontend\FrontController::class, 'myprofile'])->name('myprofile');
 Route::get('myprofile/edit/{id}', [App\Http\Controllers\Frontend\FrontController::class, 'myprofile_edit'])->name('myprofile.edit');
 Route::put('myprofile/update/{id}', [App\Http\Controllers\Frontend\FrontController::class, 'myprofile_update'])->name('myprofile.update');
+
+
+//khalti
+Route::post('/khalti/payment/verify', [App\Http\Controllers\PaymentController::class, 'verifyPayment'])->name('khalti.verifypayment');
+Route::post('/khalti/payment/store', [App\Http\Controllers\PaymentController::class, 'storePayment'])->name('khalti.storepayment');
+
+
 });
 
 Auth::routes();
@@ -71,5 +79,15 @@ Route::middleware(['web','auth','isAdmin'])->group(function () {
 
     //Booking
     Route::get('totalbookings',[App\Http\Controllers\BookingController::class,'total_booking'])->name('total.bookings');
+//contact
+Route::get('contacts', [App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
+Route::delete('contacts/{id}/delete', [App\Http\Controllers\ContactController::class, 'delete'])->name('contact.delete');
+Route::get('contacts/{id}', [App\Http\Controllers\ContactController::class, 'show'])->name('contact.show');
+
+//payment
+Route::get('payments', [App\Http\Controllers\PaymentController::class, 'all_payments'])->name('payment.index');
 
 });
+
+
+//  Route::get('contact/create', [App\Http\Controllers\ContactController::class, 'create'])->name('contact.create');

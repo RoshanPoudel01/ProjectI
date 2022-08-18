@@ -48,7 +48,8 @@
                                     <td>{{ $row->plate_no }}</td>
                                     <td>{{ $row->seat_capacity }}</td>
                                     <td>{{ $row->fuel_type }}</td>
-                                    <td>{{ $row->created_at->diffForHumans() }}</td>
+                                    <td>{{ date('Y-m-d', strtotime($row->created_at))}}</td>
+
                                     <td style="display:flex">
                                         <a class="btn btn-primary btn-sm mr-2"
                                             href="{{ route('car.show', ['id' => $row->id]) }}">

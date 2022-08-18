@@ -46,7 +46,7 @@
     <div class="form-group row mb-3">
         {{ Form::label('fuel_type', 'Fuel Type *', ['class' => 'col-3 col-form-label']) }}
         <div class="col-9">
-            {{ Form::select('fuel_type',['E'=>"Electric",'P'=>"Petrol"], null, ['class' => 'form-control', 'id' => 'fuel_type', 'placeholder' => 'Fuel Type']) }}
+            {{ Form::select('fuel_type',['ELectric'=>"Electric",'Petrol'=>"Petrol"], null, ['class' => 'form-control', 'id' => 'fuel_type', 'placeholder' => 'Fuel Type']) }}
             @include('admin.includes.validation_error_message',['fieldname' => 'fuel_type'])
         </div>
     </div>

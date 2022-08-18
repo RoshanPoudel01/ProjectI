@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('booking_payments', function (Blueprint $table) {
+        Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('booking_id')->constrained('bookings');
-            $table->foreignId('payment_id')->constrained('payments');
+            $table->string("FullName");
+            $table->string("Email");
+            $table->longText("Message");
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('booking_payments');
+        Schema::dropIfExists('contacts');
     }
 };

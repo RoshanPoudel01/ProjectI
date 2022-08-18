@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         $new_cars=[];
-        $new_cars['rows'] =Car::latest()->take(3)->get();
+        $new_cars['rows'] =Car::where('stock',1)->latest()->take(3)->get();
         return view('home',compact('new_cars'));
     }
     public function view_details($id){
