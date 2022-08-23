@@ -1,4 +1,4 @@
-@extends('admin.layouts.app',['panel' => 'CarBrand','page' => 'Show'])
+@extends('admin.layouts.app',['panel' => 'Contact','page' => 'Show'])
 
 @section('title', 'Home')
 
@@ -8,15 +8,19 @@
             <table class="table table-striped">
                 <tr>
                     <th>Name</th>
-                    <td>{{ $data['row']->brand }}</td>
+                    <td>{{ $data['row']->FullName }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ $data['row']->Email }}</td>
+                </tr>
+                <tr>
+                    <th>Message</th>
+                    <td>{{ $data['row']->Message }}</td>
                 </tr>
                 <tr>
                     <th>Created At</th>
                     <td>{{ $data['row']->created_at }}</td>
-                </tr>
-                <tr>
-                    <th>Updated At</th>
-                    <td>{{ $data['row']->updated_at }}</td>
                 </tr>
             </table>
         </div>

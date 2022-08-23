@@ -121,13 +121,19 @@ class CarController extends Controller
     }
 
     public function delete($id){
+        try{
 
         $data['row'] = $this->model->where('id',$id)->first();
 
         $data['row']->delete();
 
         session()->flash('success_message','Data Deleted Successfully');
+        }
 
+        catch(\Exception $e){
+            session()->flash('error_message','Cannot Delete Car that Has booking');
+
+        }
         return redirect()->route('car.index');
 
     }
